@@ -55,6 +55,8 @@ toc: true             # 显示目录
 
 ## 二、部署到 Cloudflare Pages（推荐，主方案）
 
+> 本仓库当前状态：已通过 **Wrangler 直接上传**部署到临时项目 `muyan-blog-temp`（https://muyan-blog-temp.pages.dev）。待 GitHub 状态恢复后，按下方「三、升级为 Git 自动部署」操作即可。
+
 1. **建 GitHub 仓库**：在 [github.com](https://github.com) 新建仓库（如 `my-blog`），把本目录推上去：
 
    ```bash
@@ -83,7 +85,34 @@ toc: true             # 显示目录
 
 以后每次 `git push`，Cloudflare 自动重新构建发布，全程零费用。
 
-## 三、部署到 GitHub Pages（备选）
+### 二点五、用 Wrangler 直接上传部署（备用/临时方案）
+
+适用场景：GitHub 故障期间无法授权 Git 集成、或想先快速上线。**注意：Direct Upload 项目以后不能直接切换成 Git 集成项目**，所以临时项目请用独立名字（如 `muyan-blog-temp`），等 Git 集成就绪后再建正式项目并迁移域名。
+
+```bash
+npm i -D wrangler          # 安装
+npx wrangler login         # 浏览器授权（仅首次）
+npm run build              # 生成 public/
+
+# 创建项目（首次）并部署
+npx wrangler pages project create muyan-blog-temp --production-branch=main
+npx wrangler pages deploy public --project-name=muyan-blog-temp --branch=main
+
+# 以后每次更新只需：
+npm run build
+npx wrangler pages deploy public --project-name=muyan-blog-temp --branch=main
+```
+
+### 三、升级为 Git 自动部署（GitHub 恢复后）
+
+1. 等 [githubstatus.com](https://www.githubstatus.com) 恢复为 **All Systems Operational**
+2. Cloudflare → **Workers & Pages** → **Create** → **Connect to Git** → 授权时只选 `muyan-blog` 仓库
+3. 构建设置：Framework preset **Hexo**、Build command `npm run build`、输出目录 `public`
+4. **项目名用正式名 `muyan-blog`**（不要用 temp 名），Deploy
+5. 迁移域名（如果临时项目绑过域名）：Pages 正式项目 → **Custom domains** → 把域名从临时项目切换过来
+6. 之后写文章 → `git push` → 自动构建发布；临时项目可在控制台删除
+
+## 四、部署到 GitHub Pages（备选）
 
 方式 A（推荐）：本仓库已带 `.github/workflows/pages.yml`，只需：
 

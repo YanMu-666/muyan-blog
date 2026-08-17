@@ -8,6 +8,7 @@
     "clean": "hexo clean",
     "server": "hexo server",
     "deploy": "hexo deploy",
+    "deploy:pages": "wrangler pages deploy public --project-name=muyan-blog-temp --branch=main",
     "new": "hexo new"
   },
   "engines": {
@@ -27,5 +28,8 @@
     "hexo-renderer-ejs": "^2.0.0",
     "hexo-renderer-marked": "^6.3.0",
     "hexo-server": "^3.0.0"
+  },
+  "devDependencies": {
+    "wrangler": "^4.123.0"
   }
 }
