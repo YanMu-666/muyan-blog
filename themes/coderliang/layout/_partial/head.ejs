@@ -26,8 +26,5 @@
 <!-- 终端风 favicon -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b1120'/%3E%3Ctext x='6' y='23' font-family='Menlo,monospace' font-size='18' fill='%2300e5c6'%3E%26gt;_%3C/text%3E%3C/svg%3E">
 <link rel="alternate" type="application/atom+xml" title="<%- config.title %>" href="<%- url_for('/atom.xml') %>">
-<!-- Geist 字体（原站同款），离线时自动回退系统字体 -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- 字体已本地托管（themes/coderliang/source/fonts），无需外网字体 CDN -->
 <link rel="stylesheet" href="<%- url_for('/css/style.css') %>">

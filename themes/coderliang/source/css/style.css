@@ -3,6 +3,22 @@
    配色与质感复刻 coderliang.com（oklch 色彩、青色霓虹 glow）
    ============================================================= */
 
+/* ---------- 0. 本地字体（可变字体，覆盖全部字重；无需外网 Google Fonts） ---------- */
+@font-face {
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/geist-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/geistmono-latin.woff2") format("woff2");
+}
+
 /* ---------- 1. Design Tokens ---------- */
 :root {
   /* 深色（默认） */
