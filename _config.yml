@@ -17,7 +17,7 @@ timezone: Asia/Shanghai
 #   Cloudflare Pages: https://fangmuyan.pages.dev
 #   自定义域名:       https://fangmuyan.com
 #   GitHub Pages:     https://你的用户名.github.io
-url: https://fangmuyan.pages.dev
+url: https://muyan-blog.pages.dev
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
