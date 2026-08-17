@@ -1,0 +1,52 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-terminal mono">
+      <div class="t-line"><span class="t-prompt">$</span> <span class="t-cmd">echo "Thanks for reading. Happy hacking."</span></div>
+      <div class="t-line t-out"><span class="t-green">Happy hacking, <%- theme.site.name %>! 🚀</span></div>
+    </div>
+
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <a class="logo" href="<%- url_for('/') %>">
+          <span class="logo-mark">~/</span><span class="logo-name"><%- theme.site.name %></span><span class="logo-cursor"></span>
+        </a>
+        <p class="footer-desc"><%- theme.site.description %></p>
+        <div class="footer-social">
+          <% if (theme.footer.github) { %>
+          <a class="social-link mono" href="<%- theme.footer.github %>" target="_blank" rel="noopener" title="GitHub">github</a>
+          <% } %>
+          <% if (theme.footer.email) { %>
+          <a class="social-link mono" href="mailto:<%- theme.footer.email %>" title="Email">mail</a>
+          <% } %>
+          <a class="social-link mono" href="<%- url_for('/atom.xml') %>" title="RSS">rss</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title mono">Navigate</div>
+        <% Object.keys(theme.footer.nav).forEach(function (name) { %>
+          <a class="footer-link" href="<%- url_for(theme.footer.nav[name]) %>"><%- name %></a>
+        <% }); %>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title mono">Projects</div>
+        <% Object.keys(theme.footer.projects).forEach(function (name) { %>
+          <a class="footer-link" href="<%- theme.footer.projects[name] %>" <%= (theme.footer.projects[name].indexOf('http') === 0 ? 'target="_blank" rel="noopener"' : '') %>><%- name %></a>
+        <% }); %>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title mono">Categories</div>
+        <% Object.keys(theme.footer.categories).forEach(function (name) { %>
+          <a class="footer-link" href="<%- url_for(theme.footer.categories[name]) %>"><%- name %></a>
+        <% }); %>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span class="mono">© <%- theme.site.since %> <%- theme.site.name %>. All rights reserved.</span>
+      <span class="mono footer-built">Built with <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://pages.cloudflare.com" target="_blank" rel="noopener">Cloudflare Pages</a></span>
+    </div>
+  </div>
+</footer>

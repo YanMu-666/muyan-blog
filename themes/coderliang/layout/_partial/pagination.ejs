@@ -1,0 +1,28 @@
+<% if (page.total > 1) { %>
+<nav class="pagination mono" aria-label="分页">
+  <%
+    var prev = page.prev_link, next = page.next_link;
+    var current = page.current, total = page.total;
+    var start = Math.max(1, current - 2), end = Math.min(total, current + 2);
+  %>
+  <% if (page.prev) { %>
+    <a class="page-btn" href="<%- url_for(page.prev_link) %>">← 上一页</a>
+  <% } else { %>
+    <span class="page-btn disabled">← 上一页</span>
+  <% } %>
+  <span class="page-numbers">
+    <% for (var i = start; i <= end; i++) { %>
+      <% if (i === current) { %>
+        <span class="page-num current">[<%- i %>]</span>
+      <% } else { %>
+        <a class="page-num" href="<%- url_for(i === 1 ? '/' : page.base + 'page/' + i + '/') %>"><%- i %></a>
+      <% } %>
+    <% } %>
+  </span>
+  <% if (page.next) { %>
+    <a class="page-btn" href="<%- url_for(page.next_link) %>">下一页 →</a>
+  <% } else { %>
+    <span class="page-btn disabled">下一页 →</span>
+  <% } %>
+</nav>
+<% } %>

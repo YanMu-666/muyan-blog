@@ -1,0 +1,66 @@
+<aside class="sidebar">
+  <!-- 最新动态：tail -f blog.log -->
+  <div class="panel">
+    <div class="panel-bar">
+      <span class="panel-title mono">$ tail -f blog.log</span>
+    </div>
+    <div class="panel-body">
+      <%
+        var recent = site.posts.sort('date', -1).limit(theme.sidebar.recent_posts || 6).toArray();
+        recent.forEach(function (post, i) {
+      %>
+        <a class="log-row" href="<%- url_for(post.path) %>">
+          <span class="log-idx mono">#<%- i + 1 %></span>
+          <span class="log-body">
+            <span class="log-title"><%- post.title %></span>
+            <span class="log-meta mono"><%- date(post.date, 'YYYY/M/D') %></span>
+          </span>
+        </a>
+      <% }); %>
+    </div>
+  </div>
+
+  <!-- 热门开源项目：gh trending -->
+  <% if (theme.sidebar.github && theme.sidebar.github.enable) { %>
+  <div class="panel">
+    <div class="panel-bar">
+      <span class="panel-title mono">$ gh trending --ai</span>
+      <a class="panel-more mono" href="https://github.com/<%- theme.sidebar.github.username %>" target="_blank" rel="noopener">更多 ↗</a>
+    </div>
+    <div class="panel-body">
+      <%
+        var projects = theme.sidebar.projects || [];
+        projects.forEach(function (p) {
+      %>
+        <a class="repo-row" href="https://github.com/<%- p.repo %>" target="_blank" rel="noopener">
+          <div class="repo-head">
+            <span class="repo-lang mono"><%- p.lang %></span>
+            <span class="repo-name mono"><%- p.repo %></span>
+          </div>
+          <div class="repo-desc"><%- p.desc %></div>
+          <div class="repo-meta mono">
+            <span class="repo-star">★ <%- p.stars %></span>
+          </div>
+        </a>
+      <% }); %>
+    </div>
+  </div>
+  <% } %>
+
+  <!-- 标签云 -->
+  <div class="panel">
+    <div class="panel-bar">
+      <span class="panel-title mono">$ ls tags/</span>
+    </div>
+    <div class="panel-body">
+      <div class="tag-cloud">
+        <%
+          var tags = site.tags.toArray().sort(function (a, b) { return b.posts.length - a.posts.length; }).slice(0, 20);
+          tags.forEach(function (tag) {
+        %>
+          <a class="cloud-tag mono" href="<%- url_for(tag.path) %>">#<%- tag.name %><span class="cloud-count"><%- tag.posts.length %></span></a>
+        <% }); %>
+      </div>
+    </div>
+  </div>
+</aside>

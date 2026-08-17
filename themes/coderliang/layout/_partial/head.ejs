@@ -1,0 +1,29 @@
+<%
+  var pageTitle = page.title ? page.title + ' · ' + config.title : config.title;
+  var pageDesc = page.description || page.excerpt ? (page.description || (page.excerpt ? strip_html(page.excerpt).slice(0, 120) : '')) : config.description;
+%>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title><%- pageTitle %></title>
+<meta name="description" content="<%- pageDesc %>">
+<% if (page.keywords) { %><meta name="keywords" content="<%- page.keywords %>"><% } %>
+<link rel="canonical" href="<%- config.url %><%- page.path %>">
+<meta property="og:title" content="<%- pageTitle %>">
+<meta property="og:description" content="<%- pageDesc %>">
+<meta property="og:url" content="<%- config.url %><%- page.path %>">
+<meta property="og:site_name" content="<%- config.title %>">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="<%- page.layout === 'post' ? 'article' : 'website' %>">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="<%- pageTitle %>">
+<meta name="twitter:description" content="<%- pageDesc %>">
+<meta name="theme-color" content="#0b1120">
+<meta name="color-scheme" content="dark light">
+<!-- 终端风 favicon -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b1120'/%3E%3Ctext x='6' y='23' font-family='Menlo,monospace' font-size='18' fill='%2300e5c6'%3E%26gt;_%3C/text%3E%3C/svg%3E">
+<link rel="alternate" type="application/atom+xml" title="<%- config.title %>" href="<%- url_for('/atom.xml') %>">
+<!-- Geist 字体（原站同款），离线时自动回退系统字体 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="<%- url_for('/css/style.css') %>">

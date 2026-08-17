@@ -1,0 +1,26 @@
+<main class="container page-main">
+  <div class="content-layout">
+    <div class="content-main">
+      <div class="term-page">
+        <div class="terminal">
+          <div class="terminal-bar">
+            <span class="traffic"><i class="dot red"></i><i class="dot yellow"></i><i class="dot green"></i></span>
+            <span class="terminal-title mono">zsh — grep -r tags/<%- page.tag ? page.tag.name : '' %></span>
+          </div>
+          <div class="terminal-body mono">
+            <div class="t-line t-green">标签：#<%- page.tag ? page.tag.name : '' %>  <span class="t-dim">(<%- page.posts.length %> 篇)</span></div>
+            <div class="t-line t-gap"></div>
+            <% page.posts.each(function (post) { %>
+              <div class="t-line archive-row">
+                <span class="t-dim"><%- date(post.date, 'YYYY/MM/DD') %></span>
+                <a class="archive-link" href="<%- url_for(post.path) %>"><%- post.title %></a>
+              </div>
+            <% }); %>
+          </div>
+        </div>
+      </div>
+      <%- partial('_partial/pagination') %>
+    </div>
+    <%- partial('_partial/sidebar') %>
+  </div>
+</main>

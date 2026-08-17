@@ -1,0 +1,66 @@
+<%- partial('_partial/hero') %>
+
+<main class="container page-main">
+  <div class="content-layout">
+    <div class="content-main">
+      <!-- 标签页 -->
+      <div class="tabs mono" role="tablist" aria-label="文章分类">
+        <%
+          var tabNames = Object.keys(theme.tabs);
+          tabNames.forEach(function (name, idx) {
+            var isFirst = idx === 0;
+        %>
+          <button class="tab<%- isFirst ? ' active' : '' %>" role="tab" data-category="<%- theme.tabs[name] %>"><%- name %></button>
+        <% }); %>
+      </div>
+
+      <!-- 文章列表 -->
+      <div class="post-list" id="post-list">
+        <% page.posts.each(function (post) { %>
+          <%
+            var cats = [];
+            post.categories.each(function (c) { cats.push(c.name); });
+            var tags = [];
+            post.tags.each(function (t) { tags.push(t.name); });
+            var excerpt = '';
+            if (post.excerpt) excerpt = strip_html(post.excerpt);
+            else if (post.content) {
+              var text = strip_html(post.content).replace(/\s+/g, ' ').trim();
+              excerpt = text.slice(0, 140);
+            }
+          %>
+          <article class="post-card" data-cats="<%- cats.join(',') %>">
+            <a class="post-card-link" href="<%- url_for(post.path) %>">
+              <div class="post-card-body">
+                <div class="post-card-top">
+                  <% cats.forEach(function (c) { %>
+                    <span class="tag-pill">[<%- c %>]</span>
+                  <% }); %>
+                  <span class="post-card-date mono"><%- date(post.date, 'YYYY/M/D') %></span>
+                </div>
+                <h2 class="post-card-title"><%- post.title %></h2>
+                <% if (excerpt) { %>
+                <p class="post-card-excerpt"><%- excerpt %></p>
+                <% } %>
+                <div class="post-card-meta mono">
+                  <span class="meta-item"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span id="busuanzi_value_page_pv" data-busuanzi-page-pv>0</span> 阅读</span>
+                  <% if (theme.giscus && theme.giscus.enable) { %>
+                  <span class="meta-item"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span class="giscus-count" data-giscus-path="<%- url_for(post.path) %>">0</span> 评论</span>
+                  <% } %>
+                  <% if (tags.length) { %>
+                  <span class="meta-item"><% tags.slice(0, 3).forEach(function (t) { %>#<%- t %> <% }); %></span>
+                  <% } %>
+                  <span class="meta-arrow">→</span>
+                </div>
+              </div>
+            </a>
+          </article>
+        <% }); %>
+      </div>
+
+      <%- partial('_partial/pagination') %>
+    </div>
+
+    <%- partial('_partial/sidebar') %>
+  </div>
+</main>

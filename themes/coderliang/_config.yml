@@ -1,0 +1,96 @@
+# =============================================================
+# coderliang 风主题配置（仿 coderliang.com 的霓虹终端风格）
+# 所有可改项都在这里，改完 hexo clean && hexo generate 生效
+# =============================================================
+
+# ---------------- 站点品牌 ----------------
+site:
+  name: 方木雁            # 顶栏 Logo 与页脚署名
+  whoami: 方木雁          # Hero 终端里 whoami 的输出
+  tagline: 代码改变世界 — 全栈开发 · AI 工程 · 安全研究
+  description: 代码改变世界。专注全栈开发、AI 工程与安全研究，分享技术洞察与实战经验。
+  since: 2026
+
+# ---------------- 顶栏导航 ----------------
+menu:
+  首页: /
+  全栈开发: /categories/全栈开发/
+  AI 工程: /categories/AI 工程/
+  安全研究: /categories/安全研究/
+  开源: /categories/开源/
+  关于: /about/
+
+# ---------------- 首页标签页（纯前端过滤，无需额外页面） ----------------
+tabs:
+  最新: ''
+  全栈开发: 全栈开发
+  AI 工程: AI 工程
+  安全研究: 安全研究
+  开源: 开源
+
+# ---------------- Giscus 评论区 ----------------
+# 使用教程见 README「配置评论区」。启用前必须填 repo / repo_id / category_id。
+giscus:
+  enable: false
+  repo: yourname/your-repo          # GitHub 仓库，如 zhangsan/zhangsan.github.io
+  repo_id: ''                       # 在 https://github.com/apps/giscus 获取
+  category: Announcements           # Discussions 分类名
+  category_id: ''                   # 同上获取
+  mapping: pathname
+  reactions: '1'
+  emit_metadata: '0'
+  input_position: top
+  lang: zh-CN
+
+# ---------------- 阅读量统计（不蒜子，免费，无需注册） ----------------
+busuanzi:
+  enable: true
+
+# ---------------- 侧栏 ----------------
+sidebar:
+  recent_posts: 6                   # 「最新动态」条数
+  github:
+    enable: true
+    username: your-github-username  # 改成你的 GitHub 用户名
+  # 「gh trending」面板：填你想展示的开源项目
+  projects:
+    - name: hermes-agent
+      repo: NousResearch/hermes-agent
+      desc: 一个能与你共同成长的智能体。
+      stars: '231.6K'
+      lang: Agent
+    - name: CodeWhale
+      repo: Hmbown/CodeWhale
+      desc: 开源、社区驱动的智能体 harness。
+      stars: '40.8K'
+      lang: Rust
+    - name: ai-agent-book
+      repo: bojieli/ai-agent-book
+      desc: 《深入理解 AI Agent》开源主仓库。
+      stars: '37.9K'
+      lang: Python
+
+# ---------------- 页脚 ----------------
+footer:
+  github: https://github.com/your-github-username
+  email: you@example.com
+  rss: /atom.xml
+  # 页脚导航（左列）
+  nav:
+    首页: /
+    归档: /archives/
+    关于: /about/
+    RSS: /atom.xml
+  # 页脚展示的项目（中列）
+  projects:
+    GitHub: https://github.com/your-github-username
+    RSS 订阅: /atom.xml
+  # 页脚展示的分类（右列）
+  categories:
+    全栈开发: /categories/全栈开发/
+    AI 工程: /categories/AI 工程/
+    安全研究: /categories/安全研究/
+    开源: /categories/开源/
+
+# ---------------- 其他 ----------------
+lang: zh-CN

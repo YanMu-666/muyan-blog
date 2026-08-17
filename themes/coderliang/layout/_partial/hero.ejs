@@ -1,0 +1,20 @@
+<% if (is_home()) { %>
+<section class="hero">
+  <div class="container">
+    <div class="terminal hero-terminal">
+      <div class="terminal-bar">
+        <span class="traffic"><i class="dot red"></i><i class="dot yellow"></i><i class="dot green"></i></span>
+        <span class="terminal-title mono">zsh — ~/<%- theme.site.name %></span>
+      </div>
+      <div class="terminal-body mono">
+        <div class="t-line"><span class="t-prompt">~/<%- theme.site.name %> $</span> <span class="t-cmd typing" id="hero-cmd">whoami</span></div>
+        <div class="t-line t-out" id="hero-out" aria-hidden="true"><span class="t-green"><%- theme.site.whoami %></span></div>
+        <div class="t-line t-comment">// <%- theme.site.tagline %></div>
+        <div class="t-line t-gap"></div>
+        <div class="t-line"><span class="t-prompt">blog.sh — zsh</span></div>
+        <div class="t-line t-dim">正在读取最新文章...</div>
+      </div>
+    </div>
+  </div>
+</section>
+<% } %>

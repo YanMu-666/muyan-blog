@@ -1,0 +1,38 @@
+<main class="container page-main">
+  <div class="content-layout">
+    <div class="content-main">
+      <div class="term-page">
+        <div class="terminal">
+          <div class="terminal-bar">
+            <span class="traffic"><i class="dot red"></i><i class="dot yellow"></i><i class="dot green"></i></span>
+            <span class="terminal-title mono">zsh — ls -lt archives/</span>
+          </div>
+          <div class="terminal-body mono">
+            <%
+              var years = {};
+              page.posts.each(function (post) {
+                var y = post.date.year();
+                if (!years[y]) years[y] = [];
+                years[y].push(post);
+              });
+              var yearKeys = Object.keys(years).sort(function (a, b) { return b - a; });
+            %>
+            <% yearKeys.forEach(function (y) { %>
+              <div class="t-line t-green">📁 <%= y %>/  <span class="t-dim">(<%- years[y].length %> 篇)</span></div>
+              <% years[y].forEach(function (post) { %>
+                <div class="t-line archive-row">
+                  <span class="t-dim"><%- date(post.date, 'MM/DD') %></span>
+                  <a class="archive-link" href="<%- url_for(post.path) %>"><%- post.title %></a>
+                </div>
+              <% }); %>
+            <% }); %>
+            <div class="t-line t-gap"></div>
+            <div class="t-line t-dim">共 <%- page.posts.length %> 篇文章 · $ exit</div>
+          </div>
+        </div>
+      </div>
+      <%- partial('_partial/pagination') %>
+    </div>
+    <%- partial('_partial/sidebar') %>
+  </div>
+</main>
