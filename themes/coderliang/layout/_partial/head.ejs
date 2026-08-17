@@ -2,15 +2,19 @@
   var pageTitle = page.title ? page.title + ' · ' + config.title : config.title;
   var pageDesc = page.description || page.excerpt ? (page.description || (page.excerpt ? strip_html(page.excerpt).slice(0, 120) : '')) : config.description;
 %>
+<%
+  var baseUrl = String(config.url).replace(/\/+$/, '');
+  var pageUrl = baseUrl + '/' + page.path;
+%>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><%- pageTitle %></title>
 <meta name="description" content="<%- pageDesc %>">
 <% if (page.keywords) { %><meta name="keywords" content="<%- page.keywords %>"><% } %>
-<link rel="canonical" href="<%- config.url %><%- page.path %>">
+<link rel="canonical" href="<%- pageUrl %>">
 <meta property="og:title" content="<%- pageTitle %>">
 <meta property="og:description" content="<%- pageDesc %>">
-<meta property="og:url" content="<%- config.url %><%- page.path %>">
+<meta property="og:url" content="<%- pageUrl %>">
 <meta property="og:site_name" content="<%- config.title %>">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:type" content="<%- page.layout === 'post' ? 'article' : 'website' %>">
