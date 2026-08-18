@@ -16,6 +16,7 @@ menu:
   首页: /
   全栈开发: /categories/全栈开发/
   AI 工程: /categories/AI 工程/
+  大模型知识: /categories/大模型知识/
   安全研究: /categories/安全研究/
   开源: /categories/开源/
   关于: /about/
@@ -25,6 +26,7 @@ tabs:
   最新: ''
   全栈开发: 全栈开发
   AI 工程: AI 工程
+  大模型知识: 大模型知识
   安全研究: 安全研究
   开源: 开源
 
@@ -89,6 +91,7 @@ footer:
   categories:
     全栈开发: /categories/全栈开发/
     AI 工程: /categories/AI 工程/
+    大模型知识: /categories/大模型知识/
     安全研究: /categories/安全研究/
     开源: /categories/开源/
 
