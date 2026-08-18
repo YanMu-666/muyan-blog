@@ -3,7 +3,7 @@ title: agent 时代如何搭建个人博客
 date: 2026-08-17 23:20:00
 updated: 2026-08-17 23:20:00
 categories:
-  - 全栈开发
+  - skill 工具箱
 tags:
   - Agent
   - Hexo

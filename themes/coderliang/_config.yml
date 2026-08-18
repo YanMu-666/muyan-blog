@@ -17,6 +17,7 @@ menu:
   全栈开发: /categories/全栈开发/
   AI 工程: /categories/AI 工程/
   大模型知识: /categories/大模型知识/
+  skill 工具箱: /categories/skill 工具箱/
   安全研究: /categories/安全研究/
   开源: /categories/开源/
   关于: /about/
@@ -27,6 +28,7 @@ tabs:
   全栈开发: 全栈开发
   AI 工程: AI 工程
   大模型知识: 大模型知识
+  skill 工具箱: skill 工具箱
   安全研究: 安全研究
   开源: 开源
 
@@ -92,6 +94,7 @@ footer:
     全栈开发: /categories/全栈开发/
     AI 工程: /categories/AI 工程/
     大模型知识: /categories/大模型知识/
+    skill 工具箱: /categories/skill 工具箱/
     安全研究: /categories/安全研究/
     开源: /categories/开源/
 
